@@ -39,7 +39,7 @@ func NewSphere() *Sphere {
 			nv := n * vec3(-1.0, 1.0, 1.0) // 左右反転
 
 			// 環境マッピング用テクスチャ座標計算
-			a := (nv * (90 / -z)).xy + vec2(Radius, Radius)
+			a := (nv * (50 / -z)).xy + vec2(Radius, Radius)
 
 			color := vec4(0.0,0.0,0.0,1)
 			if a.x >= 0 && a.x < Radius * 2 && a.y >= 0 && a.y < Radius * 2 {
@@ -66,17 +66,17 @@ func NewSphere() *Sphere {
 
 	i := ebiten.NewImage(500, 500)
 	camera := NewCamera(
-		Vector3{1000, 0, 12000},
+		Vector3{3000, 0, 14000},
 		Vector3{0, 0, 0},
 		Vector3{0, -1, 0},
-		NewProjectionPerspective(90, 30000, 0, float32(i.Bounds().Dx()), 0, float32(i.Bounds().Dy())),
+		NewProjectionPerspective(50, 30000, 0, float32(i.Bounds().Dx()), 0, float32(i.Bounds().Dy())),
 		NewViewport(float32(i.Bounds().Dx()), float32(i.Bounds().Dy())),
 	)
 
 	s := Sphere{
 		Center:  Vector3{},
-		Radius:  1000,
-		RadiusP: Vector3{1000, 0, 0},
+		Radius:  3000,
+		RadiusP: Vector3{3000, 0, 0},
 		shader:  sh,
 		image:   i,
 		Camera:  camera,
@@ -86,7 +86,7 @@ func NewSphere() *Sphere {
 }
 
 func (s *Sphere) GetModelMatrix() Matrix4 {
-	m := NewMatrix4Translate(1000, 0, 12000)
+	m := NewMatrix4Translate(3000, 0, 14000)
 	return m
 }
 

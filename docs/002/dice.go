@@ -123,8 +123,8 @@ func NewDice() *Dice {
 }
 
 func (d *Dice) GetModelMatrix() Matrix4 {
-	m := d.Rotate.Mul(NewMatrix4Scale(800, 800, 800))
-	m = m.Mul(NewMatrix4Translate(-1500, 0, 10000))
+	m := d.Rotate.Mul(NewMatrix4Scale(2800, 2800, 2800))
+	m = m.Mul(NewMatrix4Translate(-5500, 0, 10000))
 	return m
 }
 
